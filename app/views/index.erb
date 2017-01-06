@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Week 1</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+    <h1> TEST</h1>
+    <ul>
+        <% @tweets.each do |tweet| %>
+            <li>
+                <%= tweet.status %> - <%=tweet.user.username %>
+            </li>
+        <% end %>
+
+        <form method="post" action="/tweets">
+          <select name="user_id">
+          <% @users.each do |user| %>
+          <option value="<%=user.id%>"><%= user.username %></option>
+          <% end %>
+        </select>
+
+          <p>Status: </p><input type="text" name="status">
+          <input type="submit">
+        </form>
+    </ul>
+    </div>
+  </body>
+</html>
